@@ -1,15 +1,15 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 
-import { Route, Switch } from 'react-router-dom';
 
-import Home from './home/Home';
+import ScheduleRouter from './schedule/ScheduleRouter';
 
 export default function MainRouter() {
   return (
     <Switch>
       <Route
         path="/"
-        render={params => (<Home {...params} />)}
+        component={ScheduleRouter}
       />
     </Switch>
   );
