@@ -8,7 +8,7 @@ import Header from 'screens/shared/components/header/Header';
 export default function ScheduleRouter() {
   return (
     <Grid>
-      <Header>
+      <Header withMenuButton>
         Главная
       </Header>
     </Grid>
