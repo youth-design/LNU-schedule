@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
 
-export default function rootReducer() {
-  combineReducers({});
-}
+import facultiesReducer from "./faculties/reducer";
+
+const rootReducer = combineReducers({
+  facultiesReducer
+});
+
+export default rootReducer;
