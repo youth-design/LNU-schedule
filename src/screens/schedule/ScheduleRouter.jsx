@@ -1,16 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import Grid from '@material-ui/core/Grid';
-
-// eslint-disable-next-line import/no-unresolved
-import Header from 'screens/shared/components/header/Header';
+import { Switch, Route } from "react-router-dom";
 
 export default function ScheduleRouter() {
   return (
-    <Grid>
-      <Header withMenuButton>
-        Главная
-      </Header>
-    </Grid>
+    <Switch>
+      <Route path="/faculty" render={() => <div>кря</div>} />
+    </Switch>
   );
 }
