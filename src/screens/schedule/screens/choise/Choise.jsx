@@ -5,13 +5,15 @@ import { connect } from "react-redux";
 
 import { Route } from "react-router-dom";
 
-import { getFaculties } from "state/faculties/actions";
+import { fetchFaculties } from "state/faculties/actions";
+import { fetchGroups } from "state/groups/actions";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
 
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
@@ -24,12 +26,13 @@ import Header from "screens/shared/components/header/Header";
 
 import styles from "./Choise.module.sass";
 
-const mapStateToProps = ({ facultiesReducer }) => ({
-  facultiesReducer
+const mapStateToProps = ({ facultiesReducer, groupsReducer }) => ({
+  facultiesReducer,
+  groupsReducer
 });
 
 const mapDispatchToProps = dispatch => ({
-  facultiesActions: bindActionCreators(getFaculties, dispatch)
+  actions: bindActionCreators({ fetchFaculties, fetchGroups }, dispatch)
 });
 
 class Choise extends Component {
@@ -40,16 +43,48 @@ class Choise extends Component {
   };
 
   componentDidMount() {
-    this.props.facultiesActions();
+    this.props.actions.fetchFaculties();
+    this.pathToState();
   }
 
-  facultyChange = e => {
+  componentDidUpdate(prevState) {
+    if (prevState.location.pathname !== this.props.location.pathname) {
+      this.pathToState();
+    }
+  }
+
+  pathToState = () => {
+    if (this.props.location.pathname.split("/").length >= 3) {
+      this.setState({
+        faculty: this.props.location.pathname.split("/")[2],
+        activeStep: 1
+      });
+    }
+    if (this.props.location.pathname.split("/").length >= 4) {
+      this.setState({
+        group: this.props.location.pathname.split("/")[3],
+        activeStep: 2
+      });
+    }
+  };
+
+  changeFaculty = e => {
     this.setState({
       group: "",
       activeStep: 1,
       faculty: e.target.value
     });
     this.props.history.push(`/schedule/${e.target.value}`);
+  };
+
+  changeGroup = e => {
+    this.setState({
+      group: e.target.value,
+      activeStep: 2
+    });
+    this.props.history.push(
+      `/schedule/${this.state.faculty}/${e.target.value}`
+    );
   };
 
   render() {
@@ -96,7 +131,7 @@ class Choise extends Component {
                     </label>
                     <FormControl className={styles.select}>
                       <InputLabel>Факультет</InputLabel>
-                      <Select value={faculty} onChange={this.facultyChange}>
+                      <Select value={faculty} onChange={this.changeFaculty}>
                         {faculties.map((faculty, id) => (
                           <MenuItem key={id} value={faculty.alias}>
                             {faculty.title}
@@ -108,8 +143,24 @@ class Choise extends Component {
                   <Grid item>
                     <Route
                       path="/schedule/:faculty"
+                      render={params => {
+                        return (
+                          <GroupChoise
+                            {...params}
+                            groupsReducer={this.props.groupsReducer}
+                            fetchGroups={this.props.actions.fetchGroups}
+                            changeGroup={this.changeGroup}
+                            group={this.state.group}
+                          />
+                        );
+                      }}
+                    />
+                    <Route
+                      path="/schedule/:faculty/:group/"
                       render={params => (
-                        <GroupChoise {...params} faculty={this.state.faculty} />
+                        <div className={styles.button}>
+                          <Button color="primary">Перейти к расписанию</Button>
+                        </div>
                       )}
                     />
                   </Grid>

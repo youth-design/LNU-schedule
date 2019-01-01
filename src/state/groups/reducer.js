@@ -1,31 +1,31 @@
 import {
-  FETCH_FACULTIES,
-  FETCH_FACULTIES_SUCCESS,
-  FETCH_FACULTIES_ERROR
+  FETCH_GROUPS,
+  FETCH_GROUPS_SUCCESS,
+  FETCH_GROUPS_ERROR
 } from "./constants";
 
 const initialState = {
   isFetching: false,
   isError: false,
-  faculties: []
+  groups: []
 };
 
-function facultiesReducer(state = initialState, action) {
+function groupsReducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_FACULTIES:
+    case FETCH_GROUPS:
       return {
         ...state,
         isFetching: true,
         isError: false
       };
-    case FETCH_FACULTIES_SUCCESS:
+    case FETCH_GROUPS_SUCCESS:
       return {
         ...state,
         isFetching: false,
         isError: false,
-        faculties: action.faculties
+        groups: action.groups
       };
-    case FETCH_FACULTIES_ERROR:
+    case FETCH_GROUPS_ERROR:
       return {
         ...state,
         isFetching: false,
@@ -36,4 +36,4 @@ function facultiesReducer(state = initialState, action) {
   }
 }
 
-export default facultiesReducer;
+export default groupsReducer;

@@ -1,21 +1,21 @@
 import {
-  GET_FACULTIES,
-  GET_FACULTIES_SUCCESS,
-  GET_FACULTIES_ERROR
+  FETCH_FACULTIES,
+  FETCH_FACULTIES_SUCCESS,
+  FETCH_FACULTIES_ERROR
 } from "./constants";
 
-const getFaculties = () => ({
-  type: GET_FACULTIES
+const fetchFaculties = () => ({
+  type: FETCH_FACULTIES
 });
 
-const getFacultiesSuccess = faculties => ({
-  type: GET_FACULTIES_SUCCESS,
+const fetchFacultiesSuccess = faculties => ({
+  type: FETCH_FACULTIES_SUCCESS,
   faculties
 });
 
-const getFacultiesError = message => ({
-  type: GET_FACULTIES_ERROR,
+const fetchFacultiesError = message => ({
+  type: FETCH_FACULTIES_ERROR,
   message
 });
 
-export { getFaculties, getFacultiesSuccess, getFacultiesError };
+export { fetchFaculties, fetchFacultiesSuccess, fetchFacultiesError };

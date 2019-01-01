@@ -1,12 +1,12 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
-import { getFacultiesSuccess, getFacultiesError } from "./actions";
+import { fetchFacultiesSuccess, fetchFacultiesError } from "./actions";
 
 import rsf from "../rsf";
 
-import { GET_FACULTIES } from "./constants";
+import { FETCH_FACULTIES } from "./constants";
 
-function* getFaculties() {
+function* fetchFaculties() {
   try {
     const snapshot = yield call(rsf.firestore.getCollection, "faculties");
 
@@ -15,14 +15,14 @@ function* getFaculties() {
       faculties = [...faculties, faculty.data()];
     });
 
-    yield put(getFacultiesSuccess(faculties));
+    yield put(fetchFacultiesSuccess(faculties));
   } catch (e) {
-    yield put(getFacultiesError(e.message));
+    yield put(fetchFacultiesError(e.message));
   }
 }
 
 function* watchFaculties() {
-  yield takeEvery(GET_FACULTIES, getFaculties);
+  yield takeEvery(FETCH_FACULTIES, fetchFaculties);
 }
 
 export default watchFaculties;
