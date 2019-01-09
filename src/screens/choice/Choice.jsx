@@ -21,10 +21,10 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import GroupChoise from "./components/groupChoise/GroupChoise";
+import GroupChoice from "./components/groupChoice/GroupChoice";
 import Header from "screens/shared/components/header/Header";
 
-import styles from "./Choise.module.sass";
+import styles from "./Choice.module.sass";
 
 const mapStateToProps = ({ facultiesReducer, groupsReducer }) => ({
   facultiesReducer,
@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ fetchFaculties, fetchGroups }, dispatch)
 });
 
-class Choise extends Component {
+class Choice extends Component {
   state = {
     activeStep: 0,
     faculty: "",
@@ -74,7 +74,7 @@ class Choise extends Component {
       activeStep: 1,
       faculty: e.target.value
     });
-    this.props.history.push(`/schedule/${e.target.value}`);
+    this.props.history.push(`/choice/${e.target.value}`);
   };
 
   changeGroup = e => {
@@ -82,9 +82,7 @@ class Choise extends Component {
       group: e.target.value,
       activeStep: 2
     });
-    this.props.history.push(
-      `/schedule/${this.state.faculty}/${e.target.value}`
-    );
+    this.props.history.push(`/choice/${this.state.faculty}/${e.target.value}`);
   };
 
   render() {
@@ -142,10 +140,10 @@ class Choise extends Component {
                   </Grid>
                   <Grid item>
                     <Route
-                      path="/schedule/:faculty"
+                      path="/choice/:faculty"
                       render={params => {
                         return (
-                          <GroupChoise
+                          <GroupChoice
                             {...params}
                             groupsReducer={this.props.groupsReducer}
                             fetchGroups={this.props.actions.fetchGroups}
@@ -156,10 +154,21 @@ class Choise extends Component {
                       }}
                     />
                     <Route
-                      path="/schedule/:faculty/:group/"
+                      path="/choice/:faculty/:group"
                       render={params => (
                         <div className={styles.button}>
-                          <Button color="primary">Перейти к расписанию</Button>
+                          <Button
+                            color="primary"
+                            onClick={() => {
+                              params.history.push(
+                                `/schedule/${params.match.params.faculty}/${
+                                  params.match.params.group
+                                }`
+                              );
+                            }}
+                          >
+                            Перейти к расписанию
+                          </Button>
                         </div>
                       )}
                     />
@@ -177,4 +186,4 @@ class Choise extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Choise);
+)(Choice);

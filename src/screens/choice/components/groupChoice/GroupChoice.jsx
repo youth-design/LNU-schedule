@@ -6,9 +6,9 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import styles from "./GroupChoise.module.sass";
+import styles from "./GroupChoice.module.sass";
 
-export default class GroupChoise extends Component {
+export default class GroupChoice extends Component {
   componentDidMount() {
     this.props.fetchGroups(this.props.match.params.faculty);
   }
