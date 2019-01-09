@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 
 import Header from "screens/shared/components/header/Header";
 
-export default function MainScreen() {
+export default function Main() {
   return (
     <Grid direction="column" container>
       <Grid item>

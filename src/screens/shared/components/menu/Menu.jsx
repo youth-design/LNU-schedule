@@ -50,7 +50,7 @@ export default class Menu extends Component {
               </Link>
             </ListItem>
             <ListItem className={styles.listItem} button>
-              <Link to="/faculty">
+              <Link to="/choice">
                 <ListItemIcon>
                   <i className="fas fa-university" />
                 </ListItemIcon>
@@ -58,7 +58,7 @@ export default class Menu extends Component {
               </Link>
             </ListItem>
             <ListItem className={styles.listItem} button>
-              <Link to="/group">
+              <Link to="/choice">
                 <ListItemIcon>
                   <i className="fas fa-users" />
                 </ListItemIcon>
