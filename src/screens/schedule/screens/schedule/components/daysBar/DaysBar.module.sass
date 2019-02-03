@@ -1,0 +1,38 @@
+@import "screens/shared/styles/colors.sass"
+
+.daysBar
+  width: 100%
+  overflow-x: auto
+  white-space: nowrap
+
+.circleContainer
+  display: inline-flex !important
+  margin: 1rem
+  width: auto !important
+  cursor: pointer
+  -webkit-tap-highlight-color: transparent
+
+
+.circle
+  height: 2.5rem
+  width: 2.5rem
+  border-radius: 50%
+  background-color: darken($light-primary-color, 10%)
+  color: $text-color
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  transition: all .3s
+
+.dayTitle
+  padding: 3px 0
+  color: $secondary-text-color
+  &:first-letter
+    text-transform: uppercase
+
+.active
+  .circle
+    background-color: $accent-color
+    color: $text-color
+  .dayTitle
+    color: $accent-color !important

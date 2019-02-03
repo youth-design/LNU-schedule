@@ -1,4 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
+
+import moment from "moment";
+import "moment/locale/ru";
 
 import { Provider } from "react-redux";
 
@@ -7,14 +10,19 @@ import store from "./state/store";
 
 import MainRouter from "./screens/MainRouter";
 
-function App() {
-  return (
-    <Provider store={store}>
-      <HashRouter>
-        <MainRouter />
-      </HashRouter>
-    </Provider>
-  );
+class App extends Component {
+  componentDidMount() {
+    moment.locale("ru");
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        <HashRouter>
+          <MainRouter />
+        </HashRouter>
+      </Provider>
+    );
+  }
 }
 
 export default App;
