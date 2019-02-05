@@ -1,21 +1,21 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
+import { apiGet } from "api/methods";
+
 import { fetchGroupsSuccess, fetchGroupsError } from "./actions";
 
-import rsf from "../rsf";
 import { FETCH_GROUPS } from "./constants";
 
 function* fetchGroups({ collectionToFetch }) {
-  try {
-    const snapshot = yield call(rsf.firestore.getCollection, collectionToFetch);
-
-    let groups = [];
-    snapshot.forEach(group => {
-      groups = [...groups, group.data()];
-    });
-    yield put(fetchGroupsSuccess(groups));
-  } catch (e) {
-    yield put(fetchGroupsError(e.message));
+  let groups = yield call(
+    apiGet,
+    "https://dev-template.github.io/schedule_dahl/groups.json"
+  );
+  if (!groups.error) {
+    console.log(groups[collectionToFetch]);
+    yield put(fetchGroupsSuccess(groups[collectionToFetch]));
+  } else {
+    yield put(fetchGroupsError("Что-то пошло не так"));
   }
 }
 
