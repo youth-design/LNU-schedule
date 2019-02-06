@@ -1,0 +1,30 @@
+@import "screens/shared/styles/colors.sass"
+@import 'screens/shared/styles/variables.sass'
+
+
+.monthBar
+  height: 100%
+
+.monthContainer
+  font-size: 1.4rem
+  font-weight: normal
+  padding: 0rem 1.5rem
+  height: $header-height
+  cursor: pointer
+  -webkit-tap-highlight-color: transparent !important
+  &:hover
+    background-color: rgba(0,0,0,0.1)
+  .monthTitle:first-letter
+    text-transform: uppercase
+
+.dot
+  width: 5px
+  height: 5px
+  border-radius: 2.5px
+  background-color: $text-color
+  transition: all .3s
+
+.active
+  background-color: rgba(0,0,0,0.1)
+  .dot
+    transform: scale(2)

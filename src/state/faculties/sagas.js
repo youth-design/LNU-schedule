@@ -1,23 +1,20 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
-import { fetchFacultiesSuccess, fetchFacultiesError } from "./actions";
+import { apiGet } from "api/methods";
 
-import rsf from "../rsf";
+import { fetchFacultiesSuccess, fetchFacultiesError } from "./actions";
 
 import { FETCH_FACULTIES } from "./constants";
 
 function* fetchFaculties() {
-  try {
-    const snapshot = yield call(rsf.firestore.getCollection, "faculties");
-
-    let faculties = [];
-    snapshot.forEach(faculty => {
-      faculties = [...faculties, faculty.data()];
-    });
-
+  const faculties = yield call(
+    apiGet,
+    "https://dev-template.github.io/schedule_dahl/faculties.json"
+  );
+  if (!faculties.error) {
     yield put(fetchFacultiesSuccess(faculties));
-  } catch (e) {
-    yield put(fetchFacultiesError(e.message));
+  } else {
+    yield put(fetchFacultiesError("Что-то пошло не так"));
   }
 }
 
