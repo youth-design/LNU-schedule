@@ -12,7 +12,6 @@ function* fetchGroups({ collectionToFetch }) {
     "https://dev-template.github.io/schedule_dahl/groups.json"
   );
   if (!groups.error) {
-    console.log(groups[collectionToFetch]);
     yield put(fetchGroupsSuccess(groups[collectionToFetch]));
   } else {
     yield put(fetchGroupsError("Что-то пошло не так"));
