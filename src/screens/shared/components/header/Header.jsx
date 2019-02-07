@@ -13,11 +13,11 @@ export default function Header(props) {
   return (
     <Grid className={styles.main} alignItems="center" container>
       {withMenuButton && (
-        <Grid className={styles.menu} item>
+        <Grid xs="auto" sm={1} className={styles.menu} item>
           <Menu />
         </Grid>
       )}
-      <Grid className={styles.children} item>
+      <Grid xs="auto" sm={11} className={styles.children} item>
         {children}
       </Grid>
     </Grid>

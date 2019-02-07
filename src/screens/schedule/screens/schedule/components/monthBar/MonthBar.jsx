@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import styles from "./MonthBar.module.sass";
 
 export default function MonthBar(props) {
-  const { date } = props;
+  const { date, week } = props;
   return (
     <Grid className={styles.monthBar} alignItems="stretch" container>
       <Grid item>
@@ -58,6 +58,9 @@ export default function MonthBar(props) {
             </div>
           </Grid>
         </Grid>
+      </Grid>
+      <Grid className={styles.week} item>
+        {week ? "Ⅰ" : "Ⅱ"}
       </Grid>
     </Grid>
   );
