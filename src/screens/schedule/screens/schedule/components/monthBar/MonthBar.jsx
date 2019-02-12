@@ -20,7 +20,7 @@ export default function MonthBar(props) {
           onClick={props.setMonthDecorator(moment().month())}
           container
         >
-          <Grid xs={4} item>
+          <Grid item>
             <div className={styles.dot} />
           </Grid>
           <Grid className={styles.monthTitle} item>
@@ -47,7 +47,7 @@ export default function MonthBar(props) {
           )}
           container
         >
-          <Grid xs={4} item>
+          <Grid item>
             <div className={styles.dot} />
           </Grid>
           <Grid className={styles.monthTitle} item>
@@ -59,8 +59,15 @@ export default function MonthBar(props) {
           </Grid>
         </Grid>
       </Grid>
-      <Grid className={styles.week} item>
-        {week ? "Ⅰ" : "Ⅱ"}
+      <Grid className={styles.weekContainer} item>
+        <Grid className={styles.week} alignItems="center" container>
+          <Grid className={styles.weekNumber} item>
+            {week ? "1" : "2"}
+          </Grid>
+          <Grid className={styles.weekTitle} item>
+            Неделя
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

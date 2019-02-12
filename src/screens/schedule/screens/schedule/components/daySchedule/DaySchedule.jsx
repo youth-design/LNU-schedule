@@ -13,12 +13,21 @@ export default function DaySchedule(props) {
         <React.Fragment key={iterator.toString()}>
           <Grid className={styles.lessonCell} justify="space-between" container>
             <Grid item>
-              <Grid direction="column" container>
-                <Grid item>
-                  <span>{lesson[week].name}</span>
+              <Grid alignItems="center" container>
+                <Grid className={styles.lessonNumber} item>
+                  {iterator + 1}
                 </Grid>
                 <Grid item>
-                  <span className={styles.teacher}>{lesson[week].teacher}</span>
+                  <Grid direction="column" container>
+                    <Grid item>
+                      <span>{lesson[week].name}</span>
+                    </Grid>
+                    <Grid item>
+                      <span className={styles.teacher}>
+                        {lesson[week].teacher}
+                      </span>
+                    </Grid>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
