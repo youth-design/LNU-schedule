@@ -37,7 +37,6 @@ class Schedule extends Component {
   render() {
     const { date } = this.state;
     const { isFetching } = this.props;
-    console.log(this.props.scheduleTime);
     return (
       <Grid direction="column" container>
         <Grid item>

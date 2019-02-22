@@ -7,7 +7,6 @@ import styles from "./DaySchedule.module.sass";
 
 export default function DaySchedule(props) {
   const { schedule, week } = props;
-  console.log(props.scheduleTime);
   return (
     <Grid direction="column" container>
       {schedule.map((lesson, iterator) => (
