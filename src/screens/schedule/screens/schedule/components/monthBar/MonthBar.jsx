@@ -8,7 +8,12 @@ import styles from "./MonthBar.module.sass";
 export default function MonthBar(props) {
   const { date, week } = props;
   return (
-    <Grid className={styles.monthBar} alignItems="stretch" container>
+    <Grid
+      className={styles.monthBar}
+      alignItems="stretch"
+      justify="flex-start"
+      container
+    >
       <Grid item>
         <Grid
           direction="column"

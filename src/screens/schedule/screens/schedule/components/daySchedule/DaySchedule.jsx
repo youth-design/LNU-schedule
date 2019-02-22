@@ -7,6 +7,7 @@ import styles from "./DaySchedule.module.sass";
 
 export default function DaySchedule(props) {
   const { schedule, week } = props;
+  console.log(props.scheduleTime);
   return (
     <Grid direction="column" container>
       {schedule.map((lesson, iterator) => (
@@ -34,10 +35,12 @@ export default function DaySchedule(props) {
             <Grid item>
               <Grid direction="column" container>
                 <Grid item>
-                  <span>8:15</span>
+                  <span>{props.scheduleTime[iterator].start}</span>
                 </Grid>
                 <Grid item>
-                  <span className={styles.endTime}>9:45</span>
+                  <span className={styles.endTime}>
+                    {props.scheduleTime[iterator].end}
+                  </span>
                 </Grid>
               </Grid>
             </Grid>
