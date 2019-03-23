@@ -1,0 +1,5 @@
+export const SET_FACULTY = "SET_FACULTY";
+
+export const GET_FACULTY = "GET_FACULTY";
+export const GET_FACULTY_SUCCESS = "GET_FACULTY_SUCCESS";
+export const GET_FACULTY_ERROR = "GET_FACULTY_ERROR";

@@ -42,7 +42,7 @@ export default class Menu extends Component {
           <img src={logo} className={styles.logo} alt="Логотип" />
           <List component="nav" className={styles.navList}>
             <ListItem className={styles.listItem} button>
-              <Link to="/schedule">
+              <Link to="/">
                 <ListItemIcon>
                   <i className="fas fa-clock" />
                 </ListItemIcon>
@@ -54,15 +54,7 @@ export default class Menu extends Component {
                 <ListItemIcon>
                   <i className="fas fa-university" />
                 </ListItemIcon>
-                <ListItemText>Изменить факультет</ListItemText>
-              </Link>
-            </ListItem>
-            <ListItem className={styles.listItem} button>
-              <Link to="/choice">
-                <ListItemIcon>
-                  <i className="fas fa-users" />
-                </ListItemIcon>
-                <ListItemText>Изменить группу</ListItemText>
+                <ListItemText>Изменить группу\факультет</ListItemText>
               </Link>
             </ListItem>
           </List>

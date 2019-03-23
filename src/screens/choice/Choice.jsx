@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
-import { Route } from "react-router-dom";
-
 import { fetchFaculties } from "state/faculties/actions";
 import { fetchGroups } from "state/groups/actions";
+import { setFaculty } from "state/faculties/faculty/actions";
+import { setGroup } from "state/groups/group/actions";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -26,47 +26,25 @@ import Header from "screens/shared/components/header/Header";
 
 import styles from "./Choice.module.sass";
 
-const mapStateToProps = ({ facultiesReducer, groupsReducer }) => ({
-  facultiesReducer,
-  groupsReducer
-});
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ fetchFaculties, fetchGroups }, dispatch)
-});
-
 class Choice extends Component {
   state = {
-    activeStep: 0,
-    faculty: "",
-    group: ""
+    activeStep: this.props.groupReducer.group
+      ? 2
+      : this.props.facultyReducer.faculty
+      ? 1
+      : 0,
+    faculty: this.props.facultyReducer.faculty,
+    group: this.props.groupReducer.group
   };
 
   componentDidMount() {
     this.props.actions.fetchFaculties();
-    this.pathToState();
   }
 
   componentDidUpdate(prevState) {
     if (prevState.location.pathname !== this.props.location.pathname) {
-      this.pathToState();
     }
   }
-
-  pathToState = () => {
-    if (this.props.location.pathname.split("/").length >= 3) {
-      this.setState({
-        faculty: this.props.location.pathname.split("/")[2],
-        activeStep: 1
-      });
-    }
-    if (this.props.location.pathname.split("/").length >= 4) {
-      this.setState({
-        group: this.props.location.pathname.split("/")[3],
-        activeStep: 2
-      });
-    }
-  };
 
   changeFaculty = e => {
     this.setState({
@@ -74,7 +52,7 @@ class Choice extends Component {
       activeStep: 1,
       faculty: e.target.value
     });
-    this.props.history.push(`/choice/${e.target.value}`);
+    this.props.actions.setFaculty(e.target.value);
   };
 
   changeGroup = e => {
@@ -82,7 +60,7 @@ class Choice extends Component {
       group: e.target.value,
       activeStep: 2
     });
-    this.props.history.push(`/choice/${this.state.faculty}/${e.target.value}`);
+    this.props.actions.setGroup(e.target.value);
   };
 
   render() {
@@ -139,39 +117,27 @@ class Choice extends Component {
                     </FormControl>
                   </Grid>
                   <Grid item>
-                    <Route
-                      path="/choice/:faculty"
-                      render={params => {
-                        return (
-                          <GroupChoice
-                            {...params}
-                            groupsReducer={this.props.groupsReducer}
-                            fetchGroups={this.props.actions.fetchGroups}
-                            changeGroup={this.changeGroup}
-                            group={this.state.group}
-                          />
-                        );
-                      }}
-                    />
-                    <Route
-                      path="/choice/:faculty/:group"
-                      render={params => (
-                        <div className={styles.button}>
-                          <Button
-                            color="primary"
-                            onClick={() => {
-                              params.history.push(
-                                `/schedule/${params.match.params.faculty}/${
-                                  params.match.params.group
-                                }`
-                              );
-                            }}
-                          >
-                            Перейти к расписанию
-                          </Button>
-                        </div>
-                      )}
-                    />
+                    {this.state.faculty && (
+                      <GroupChoice
+                        faculty={this.state.faculty}
+                        groupsReducer={this.props.groupsReducer}
+                        fetchGroups={this.props.actions.fetchGroups}
+                        changeGroup={this.changeGroup}
+                        group={this.state.group}
+                      />
+                    )}
+                    {this.state.group && (
+                      <div className={styles.button}>
+                        <Button
+                          color="primary"
+                          onClick={() => {
+                            this.props.history.push("/");
+                          }}
+                        >
+                          Перейти к расписанию
+                        </Button>
+                      </div>
+                    )}
                   </Grid>
                 </Grid>
               </Paper>
@@ -182,6 +148,25 @@ class Choice extends Component {
     );
   }
 }
+
+const mapStateToProps = ({
+  facultiesReducer,
+  groupsReducer,
+  facultyReducer,
+  groupReducer
+}) => ({
+  facultiesReducer,
+  groupsReducer,
+  facultyReducer,
+  groupReducer
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(
+    { fetchFaculties, fetchGroups, setFaculty, setGroup },
+    dispatch
+  )
+});
 
 export default connect(
   mapStateToProps,

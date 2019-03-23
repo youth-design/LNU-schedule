@@ -1,19 +1,48 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Switch, Route, withRouter } from "react-router-dom";
+
+import { getFaculty } from "state/faculties/faculty/actions";
+import { getGroup } from "state/groups/group/actions";
 
 import ScheduleRouter from "./schedule/ScheduleRouter";
-import Main from "./main/Main";
 
 import NotFound from "screens/shared/screens/notFound/NotFound";
 import Choice from "./choice/Choice";
 
-export default function MainRouter() {
-  return (
-    <Switch>
-      <Route path="/" exact component={Main} />
-      <Route path="/choice" component={Choice} />
-      <Route path="/schedule/:faculty/:group" component={ScheduleRouter} />
-      <Route component={NotFound} />
-    </Switch>
-  );
+class MainRouter extends Component {
+  componentWillMount() {
+    this.props.getFaculty(this.props.history);
+    this.props.getGroup(this.props.history);
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        {!this.props.isFetching && (
+          <Switch>
+            <Route path="/" exact component={ScheduleRouter} />
+            <Route path="/choice" component={Choice} />
+            <Route component={NotFound} />
+          </Switch>
+        )}
+      </React.Fragment>
+    );
+  }
 }
+
+const mapStateToProps = ({ facultyReducer, groupReducer }) => ({
+  isFetching: facultyReducer.isFetching || groupReducer.isFetching
+});
+
+const mapDispatchToProps = {
+  getFaculty,
+  getGroup
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MainRouter)
+);

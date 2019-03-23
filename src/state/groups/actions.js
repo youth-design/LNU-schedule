@@ -4,9 +4,8 @@ import {
   FETCH_GROUPS_ERROR
 } from "./constants";
 
-const fetchGroups = collectionToFetch => ({
-  type: FETCH_GROUPS,
-  collectionToFetch
+const fetchGroups = () => ({
+  type: FETCH_GROUPS
 });
 
 const fetchGroupsSuccess = groups => ({

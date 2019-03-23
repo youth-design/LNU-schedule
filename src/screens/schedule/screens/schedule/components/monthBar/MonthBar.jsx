@@ -6,9 +6,14 @@ import Grid from "@material-ui/core/Grid";
 import styles from "./MonthBar.module.sass";
 
 export default function MonthBar(props) {
-  const { date } = props;
+  const { date, week } = props;
   return (
-    <Grid className={styles.monthBar} alignItems="stretch" container>
+    <Grid
+      className={styles.monthBar}
+      alignItems="stretch"
+      justify="flex-start"
+      container
+    >
       <Grid item>
         <Grid
           direction="column"
@@ -20,7 +25,7 @@ export default function MonthBar(props) {
           onClick={props.setMonthDecorator(moment().month())}
           container
         >
-          <Grid xs={4} item>
+          <Grid item>
             <div className={styles.dot} />
           </Grid>
           <Grid className={styles.monthTitle} item>
@@ -47,7 +52,7 @@ export default function MonthBar(props) {
           )}
           container
         >
-          <Grid xs={4} item>
+          <Grid item>
             <div className={styles.dot} />
           </Grid>
           <Grid className={styles.monthTitle} item>
@@ -56,6 +61,16 @@ export default function MonthBar(props) {
                 .add(1, "month")
                 .format("MMMM")}
             </div>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid className={styles.weekContainer} item>
+        <Grid className={styles.week} alignItems="center" container>
+          <Grid className={styles.weekNumber} item>
+            {week ? "1" : "2"}
+          </Grid>
+          <Grid className={styles.weekTitle} item>
+            Неделя
           </Grid>
         </Grid>
       </Grid>

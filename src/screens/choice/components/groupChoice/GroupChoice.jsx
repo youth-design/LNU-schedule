@@ -10,13 +10,7 @@ import styles from "./GroupChoice.module.sass";
 
 export default class GroupChoice extends Component {
   componentDidMount() {
-    this.props.fetchGroups(this.props.match.params.faculty);
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params.faculty !== this.props.match.params.faculty) {
-      this.props.fetchGroups(this.props.match.params.faculty);
-    }
+    this.props.fetchGroups();
   }
 
   render() {
@@ -36,11 +30,13 @@ export default class GroupChoice extends Component {
                 value={this.props.group}
                 onChange={this.props.changeGroup}
               >
-                {groups.map((group, id) => (
-                  <MenuItem key={id} value={group.alias}>
-                    {group.title}
-                  </MenuItem>
-                ))}
+                {!groups[this.props.faculty]
+                  ? ""
+                  : groups[this.props.faculty].map((group, id) => (
+                      <MenuItem key={id} value={group.alias}>
+                        {group.title}
+                      </MenuItem>
+                    ))}
               </Select>
             </FormControl>
           </div>
