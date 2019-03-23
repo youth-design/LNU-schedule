@@ -24,7 +24,10 @@ class Schedule extends Component {
   };
 
   componentDidMount() {
-    this.props.fetchSchedule(this.props.match.params.group);
+    if (!this.props.group) {
+      this.props.history.push("/choice");
+    }
+    this.props.fetchSchedule(this.props.group);
     this.props.fetchScheduleTime();
   }
 
@@ -71,7 +74,12 @@ class Schedule extends Component {
   }
 }
 
-const mapStateToProps = ({ scheduleReducer, scheduleTimeReducer }) => ({
+const mapStateToProps = ({
+  scheduleReducer,
+  scheduleTimeReducer,
+  groupReducer
+}) => ({
+  ...groupReducer,
   ...scheduleReducer,
   ...scheduleTimeReducer,
   isFetching: scheduleReducer.isFetching || scheduleTimeReducer.isFetching
