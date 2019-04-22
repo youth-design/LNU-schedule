@@ -13,6 +13,8 @@ function* fetchSchedule({ groupToFetch }) {
   );
   if (!newSchedule.error) {
     yield put(fetchScheduleSuccess(newSchedule));
+    window.localStorage.setItem("cached_group", groupToFetch);
+    window.localStorage.setItem("cached_schedule", JSON.stringify(newSchedule));
   } else {
     yield put(fetchScheduleError(newSchedule.error));
   }

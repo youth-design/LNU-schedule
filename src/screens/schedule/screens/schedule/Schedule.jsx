@@ -15,6 +15,8 @@ import Header from "screens/shared/components/header/Header";
 import MonthBar from "./components/monthBar/MonthBar";
 import DaysBar from "./components/daysBar/DaysBar";
 import DaySchedule from "./components/daySchedule/DaySchedule";
+import CachedScheduleDialog from "./components/cachedScheduleDialog/CachedScheduleDialog";
+
 
 import styles from "./Schedule.module.sass";
 
@@ -42,6 +44,7 @@ class Schedule extends Component {
     const { isFetching } = this.props;
     return (
       <Grid direction="column" container>
+        <CachedScheduleDialog/>
         <Grid item>
           <Header withMenuButton>
             <MonthBar
