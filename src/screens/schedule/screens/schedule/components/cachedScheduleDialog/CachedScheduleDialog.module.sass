@@ -6,12 +6,24 @@
   position: fixed
   left: 50%
   transform: translateX(-50%)
-  height: 8rem
+  min-height: 8rem
   color: $text-color
+  max-width: 90%
+  box-sizing: border-box
   padding: 0.8rem 2rem
   font-size: 1.2rem
   text-align: center
   font-weight: 300
 
-.buttonsContainer
+.buttonsContainer > div
   margin: 1rem 0
+
+.snackbar
+  div
+    background-color: $reject-accent-color !important
+    display: flex
+    align-items: center
+    font-size: 1.2rem
+  i
+    margin-right: 1rem
+    font-size: 2rem
