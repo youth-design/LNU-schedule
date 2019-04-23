@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css?family=Overpass:300,400,600,700');
+html {
+  font-size: 80% !important;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 200px) and (max-width: 320px) {
+  html {
+    font-size: 50% !important;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  html {
+    font-size: 50% !important;
+  }
+}
+
+/* @media screen and (max-width: 1469.9518px) {
+  html {
+    font-size: 74%;
+  }
+}
+@media screen and (max-width: 1455.12694px) {
+  html {
+    font-size: 73%;
+  }
+}
+@media screen and (max-width: 1440px) {
+  html {
+    font-size: 72%;
+  }
+}
+@media screen and (max-width: 1424.58185px) {
+  html {
+    font-size: 71%;
+  }
+}
+@media screen and (max-width: 1408.87278px) {
+  html {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 1392.87281px) {
+  html {
+    font-size: 69%;
+  }
+}
+@media screen and (max-width: 1376.58192px) {
+  html {
+    font-size: 68%;
+  }
+}
+@media screen and (max-width: 1360.00013px) {
+  html {
+    font-size: 67%;
+  }
+}
+@media screen and (max-width: 1343.12742px) {
+  html {
+    font-size: 66%;
+  }
+}
+@media screen and (max-width: 1325.96381px) {
+  html {
+    font-size: 65%;
+  }
+}
+@media screen and (max-width: 1308.50928px) {
+  html {
+    font-size: 64%;
+  }
+}
+@media screen and (max-width: 1290.76385px) {
+  html {
+    font-size: 63%;
+  }
+}
+@media screen and (max-width: 1272.7275px) {
+  html {
+    font-size: 62%;
+  }
+}
+@media screen and (max-width: 1254.40025px) {
+  html {
+    font-size: 61%;
+  }
+}
+@media screen and (max-width: 1235.78208px) {
+  html {
+    font-size: 60%;
+  }
+}
+@media screen and (max-width: 1216.87301px) {
+  html {
+    font-size: 59%;
+  }
+}
+@media screen and (max-width: 1197.67302px) {
+  html {
+    font-size: 58%;
+  }
+}
+@media screen and (max-width: 1178.18213px) {
+  html {
+    font-size: 57%;
+  }
+}
+@media screen and (max-width: 1158.40032px) {
+  html {
+    font-size: 56%;
+  }
+}
+@media screen and (max-width: 1138.32761px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media screen and (max-width: 1117.96398px) {
+  html {
+    font-size: 54%;
+  }
+}
+@media screen and (max-width: 1097.30945px) {
+  html {
+    font-size: 53%;
+  }
+}
+@media screen and (max-width: 1076.364px) {
+  html {
+    font-size: 52%;
+  }
+}
+@media screen and (max-width: 1055.12765px) {
+  html {
+    font-size: 51%;
+  }
+}
+@media screen and (max-width: 1033.60038px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 75%;
+  }
+} */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Overpass', sans-serif;
+  font-display: swap;
+  height: 100%;
+}
+h1, h2, h3, form, p {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: black;
+  text-decoration: none;
+}
+a:active {
+  color: black;
+}
