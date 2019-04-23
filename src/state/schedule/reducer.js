@@ -5,7 +5,9 @@ import {
   FETCH_SCHEDULE_FROM_CACHE,
   FETCH_SCHEDULE_FROM_CACHE_ERROR,
   FETCH_SCHEDULE_FROM_CACHE_SUCCESS,
-  RECONNECT_SUCCESS
+  RECONNECT_SUCCESS,
+  RECONNECT,
+  RECONNECT_ERROR
 } from "./constants";
 
 const initialState = {
@@ -59,9 +61,21 @@ function scheduleReducer(state = initialState, action) {
         isError: true,
         fetchFromCacheError: true
       };
+    case RECONNECT:
+      return {
+        ...state,
+        isFetching: true,
+        isError: false
+      };
     case RECONNECT_SUCCESS:
       return {
         ...initialState
+      };
+    case RECONNECT_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        isError: true
       };
     default:
       return state;

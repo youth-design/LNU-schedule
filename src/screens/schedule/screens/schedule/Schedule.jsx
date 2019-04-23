@@ -5,7 +5,6 @@ import moment from "moment";
 import "moment/locale/ru";
 
 import { fetchSchedule } from "state/schedule/actions";
-import { fetchScheduleTime } from "state/scheduleTime/actions";
 
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -29,7 +28,6 @@ class Schedule extends Component {
       this.props.history.push("/choice");
     }
     this.props.fetchSchedule(this.props.group);
-    this.props.fetchScheduleTime();
   }
 
   setDayDecorator = day => () =>
@@ -66,7 +64,6 @@ class Schedule extends Component {
                   ? this.props.schedule[date.weekday()]
                   : []
               }
-              scheduleTime={this.props.scheduleTime}
               week={date.week() % 2}
             />
           </Grid>
@@ -76,19 +73,14 @@ class Schedule extends Component {
   }
 }
 
-const mapStateToProps = ({
-  scheduleReducer,
-  scheduleTimeReducer,
-  groupReducer
-}) => ({
+const mapStateToProps = ({ scheduleReducer, groupReducer }) => ({
   ...groupReducer,
   ...scheduleReducer,
-  ...scheduleTimeReducer,
-  isFetching: scheduleReducer.isFetching || scheduleTimeReducer.isFetching
+  isFetching: scheduleReducer.isFetching
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ fetchSchedule, fetchScheduleTime }, dispatch);
+  bindActionCreators({ fetchSchedule }, dispatch);
 
 export default connect(
   mapStateToProps,

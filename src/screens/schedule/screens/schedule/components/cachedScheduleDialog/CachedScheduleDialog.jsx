@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchScheduleFromCache, reconnect } from "state/schedule/actions";
+import { fetchScheduleFromCache, fetchSchedule } from "state/schedule/actions";
 
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/es/Button/Button";
@@ -87,7 +87,9 @@ class CachedScheduleDialog extends Component {
                   <Grid item>
                     <Button
                       variant={"contained"}
-                      onClick={this.props.reconnect}
+                      onClick={() =>
+                        this.props.fetchSchedule(this.props.groupReducer.group)
+                      }
                     >
                       Переподключиться
                     </Button>
@@ -123,7 +125,7 @@ const mapStateToProps = ({ scheduleReducer, groupReducer }) => ({
 
 const mapDispatchToProps = {
   fetchScheduleFromCache,
-  reconnect
+  fetchSchedule
 };
 
 export default connect(

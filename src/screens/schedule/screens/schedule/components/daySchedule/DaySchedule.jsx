@@ -34,12 +34,10 @@ export default function DaySchedule(props) {
             <Grid item>
               <Grid direction="column" container>
                 <Grid item>
-                  <span>{props.scheduleTime[iterator].start}</span>
+                  <span>{lesson[week].timeStart}</span>
                 </Grid>
                 <Grid item>
-                  <span className={styles.endTime}>
-                    {props.scheduleTime[iterator].end}
-                  </span>
+                  <span className={styles.endTime}>{lesson[week].timeEnd}</span>
                 </Grid>
               </Grid>
             </Grid>
