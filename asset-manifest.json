@@ -1,7 +1,7 @@
 {
   "main.css": "/LNU-schedule/static/css/main.ea27aa04.chunk.css",
-  "main.js": "/LNU-schedule/static/js/main.e9074cd5.chunk.js",
-  "main.js.map": "/LNU-schedule/static/js/main.e9074cd5.chunk.js.map",
+  "main.js": "/LNU-schedule/static/js/main.0bfbd7fd.chunk.js",
+  "main.js.map": "/LNU-schedule/static/js/main.0bfbd7fd.chunk.js.map",
   "static/js/1.2fd70dff.chunk.js": "/LNU-schedule/static/js/1.2fd70dff.chunk.js",
   "static/js/1.2fd70dff.chunk.js.map": "/LNU-schedule/static/js/1.2fd70dff.chunk.js.map",
   "runtime~main.js": "/LNU-schedule/static/js/runtime~main.1c0f228d.js",
@@ -9,6 +9,6 @@
   "static/media/logo.png": "/LNU-schedule/static/media/logo.71269945.png",
   "static/css/main.ea27aa04.chunk.css.map": "/LNU-schedule/static/css/main.ea27aa04.chunk.css.map",
   "index.html": "/LNU-schedule/index.html",
-  "precache-manifest.75ab7dee7ed390d8983928aa137118d7.js": "/LNU-schedule/precache-manifest.75ab7dee7ed390d8983928aa137118d7.js",
+  "precache-manifest.37ee4687b0fd7a4a2cd2223bc78b7759.js": "/LNU-schedule/precache-manifest.37ee4687b0fd7a4a2cd2223bc78b7759.js",
   "service-worker.js": "/LNU-schedule/service-worker.js"
 }
