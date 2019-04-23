@@ -8,19 +8,19 @@ self.__precacheManifest = [
     "url": "/LNU-schedule/static/js/runtime~main.1c0f228d.js"
   },
   {
-    "revision": "9e5e978f492abbc0437d",
-    "url": "/LNU-schedule/static/js/main.9e5e978f.chunk.js"
+    "revision": "a34d99a433802f520a23",
+    "url": "/LNU-schedule/static/js/main.a34d99a4.chunk.js"
   },
   {
     "revision": "7094ecaf7cdaab42e649",
     "url": "/LNU-schedule/static/js/1.7094ecaf.chunk.js"
   },
   {
-    "revision": "9e5e978f492abbc0437d",
+    "revision": "a34d99a433802f520a23",
     "url": "/LNU-schedule/static/css/main.ea27aa04.chunk.css"
   },
   {
-    "revision": "fbadd07b89ab7f0644b7ae60dfb2c15c",
+    "revision": "2f984a00bce53cc34fcfc1783aeb3a89",
     "url": "/LNU-schedule/index.html"
   }
 ];
