@@ -20,7 +20,7 @@ import {
 function* fetchSchedule({ groupToFetch }) {
   const newSchedule = yield call(
     apiGet,
-    `https://dev-template.github.io/schedule_dahl/${groupToFetch}.jon`
+    `https://dev-template.github.io/schedule_dahl/${groupToFetch}.json`
   );
   if (!newSchedule.error) {
     yield put(fetchScheduleSuccess(newSchedule));
