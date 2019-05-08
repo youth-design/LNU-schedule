@@ -15,10 +15,10 @@ const defaultStyle = {
 };
 
 const transitionStyles = {
-  entering: { bottom: "2rem" },
-  entered: { bottom: "2rem" },
-  exiting: { bottom: "-10rem" },
-  exited: { bottom: "-10rem" }
+  entering: { bottom: "2rem", transform: "scale(1), translateX(-50%)" },
+  entered: { bottom: "2rem", transform: "scale(1), translateX(-50%)" },
+  exiting: { bottom: "-20rem", transform: "scale(0), translateX(-50%)" },
+  exited: { bottom: "-20rem", transform: "scale(0), translateX(-50%)" }
 };
 
 class CachedScheduleDialog extends Component {
@@ -77,8 +77,10 @@ class CachedScheduleDialog extends Component {
                 direction={"column"}
                 container
               >
-                <Grid item>Не удалось загрузить расписание из интернета</Grid>
-                <Grid item>Загрузить последнюю сохранённую версию?</Grid>
+                <Grid item>
+                  Не удалось загрузить расписание из интернета. Загрузить
+                  последнюю сохранённую версию?
+                </Grid>
                 <Grid
                   className={styles.buttonsContainer}
                   justify="space-around"
