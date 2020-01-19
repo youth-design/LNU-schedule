@@ -1,14 +1,14 @@
 {
-  "main.css": "/LNU-schedule/static/css/main.e99c1d01.chunk.css",
-  "main.js": "/LNU-schedule/static/js/main.d77a883b.chunk.js",
-  "main.js.map": "/LNU-schedule/static/js/main.d77a883b.chunk.js.map",
-  "static/js/1.7789726d.chunk.js": "/LNU-schedule/static/js/1.7789726d.chunk.js",
-  "static/js/1.7789726d.chunk.js.map": "/LNU-schedule/static/js/1.7789726d.chunk.js.map",
+  "main.css": "/LNU-schedule/static/css/main.d92e76b4.chunk.css",
+  "main.js": "/LNU-schedule/static/js/main.f7182f91.chunk.js",
+  "main.js.map": "/LNU-schedule/static/js/main.f7182f91.chunk.js.map",
+  "static/js/1.947c2c02.chunk.js": "/LNU-schedule/static/js/1.947c2c02.chunk.js",
+  "static/js/1.947c2c02.chunk.js.map": "/LNU-schedule/static/js/1.947c2c02.chunk.js.map",
   "runtime~main.js": "/LNU-schedule/static/js/runtime~main.1c0f228d.js",
   "runtime~main.js.map": "/LNU-schedule/static/js/runtime~main.1c0f228d.js.map",
   "static/media/logo.png": "/LNU-schedule/static/media/logo.71269945.png",
-  "static/css/main.e99c1d01.chunk.css.map": "/LNU-schedule/static/css/main.e99c1d01.chunk.css.map",
+  "static/css/main.d92e76b4.chunk.css.map": "/LNU-schedule/static/css/main.d92e76b4.chunk.css.map",
   "index.html": "/LNU-schedule/index.html",
-  "precache-manifest.63fa3b7ed126a736028d10bb5ac1fbb8.js": "/LNU-schedule/precache-manifest.63fa3b7ed126a736028d10bb5ac1fbb8.js",
+  "precache-manifest.0a788e005ee7826bbf366df4dfc7de81.js": "/LNU-schedule/precache-manifest.0a788e005ee7826bbf366df4dfc7de81.js",
   "service-worker.js": "/LNU-schedule/service-worker.js"
 }
