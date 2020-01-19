@@ -1,5 +1,5 @@
-html {
-  font-size: 85%;
+html, body {
+  font-size: 15px;
   font-family: Roboto, sans-serif;
 }
 
@@ -10,8 +10,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.fade-enter-active {
+  bottom: 5% !important;
+  transform: translateY(0) !important;
+}
+.fade-enter-done {
+  bottom: 5% !important;
+  transform: translateY(0) !important;
+  opacity: 1;
+}
+
+.fade-exit {
+  bottom: 5% !important;
+  transform: translateY(0) !important;
+}
+.fade-exit-active {
+  bottom: 0 !important;
+  transform: translateY(100%) !important;
+}
+
+.fade-exit-done {
+  bottom: 0 !important;
+  transform: translateY(100%) !important;
+  opacity: 0;
+}
+
+
+
 @media screen and (min-width: 200px) and (max-width: 320px) {
-  html {
-    font-size: 50%;
+  html, body {
+    font-size: 12px;
   }
 }

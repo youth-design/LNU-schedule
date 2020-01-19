@@ -1,3 +1,8 @@
+import store from "../state/store";
+import {
+  hideRequestError,
+  showRequestError
+} from "../state/requestError/actions";
 // const statusNotifications = {
 //   401: "Пожалуйста, войдите в систему",
 //   403: "Недостаточно прав",
@@ -16,6 +21,10 @@
 
 function handleErrors(response) {
   if (!response.ok) {
+    store.dispatch(showRequestError());
+    setTimeout(() => {
+      store.dispatch(hideRequestError());
+    }, 3000);
     return {
       error: true
     };

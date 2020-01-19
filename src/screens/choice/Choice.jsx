@@ -8,18 +8,16 @@ import { fetchGroups } from "state/groups/actions";
 import { setFaculty } from "state/faculties/faculty/actions";
 import { setGroup } from "state/groups/group/actions";
 
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import Button from "@material-ui/core/Button";
-
-import Select from "@material-ui/core/Select";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import {
+  Grid,
+  Paper,
+  Button,
+  Select,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  CircularProgress
+} from "@material-ui/core";
 
 import GroupChoice from "./components/groupChoice/GroupChoice";
 import Header from "screens/shared/components/header/Header";
@@ -28,11 +26,6 @@ import styles from "./Choice.module.sass";
 
 class Choice extends Component {
   state = {
-    activeStep: this.props.groupReducer.group
-      ? 2
-      : this.props.facultyReducer.faculty
-      ? 1
-      : 0,
     faculty: this.props.facultyReducer.faculty,
     group: this.props.groupReducer.group
   };
@@ -41,15 +34,9 @@ class Choice extends Component {
     this.props.actions.fetchFaculties();
   }
 
-  componentDidUpdate(prevState) {
-    if (prevState.location.pathname !== this.props.location.pathname) {
-    }
-  }
-
   changeFaculty = e => {
     this.setState({
       group: "",
-      activeStep: 1,
       faculty: e.target.value
     });
     this.props.actions.setFaculty(e.target.value);
@@ -57,41 +44,23 @@ class Choice extends Component {
 
   changeGroup = e => {
     this.setState({
-      group: e.target.value,
-      activeStep: 2
+      group: e.target.value
     });
     this.props.actions.setGroup(e.target.value);
   };
 
   render() {
-    const { activeStep, faculty } = this.state;
+    const { faculty } = this.state;
     const { faculties, isFetching } = this.props.facultiesReducer;
     return (
-      <Grid direction="column" className={styles.main} container>
-        <Grid item>
-          <Header withMenuButton>Выбор факультета</Header>
-        </Grid>
-        {isFetching ? (
-          <span className={styles.loader}>
-            <CircularProgress />
-          </span>
-        ) : (
-          <React.Fragment>
-            <Grid justify="center" container>
-              <Grid xs={12} item>
-                <Stepper className={styles.stepper} activeStep={activeStep}>
-                  <Step>
-                    <StepLabel>Выбор факультета</StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel>Выбор группы</StepLabel>
-                  </Step>
-                  <Step>
-                    <StepLabel>Получение расписания</StepLabel>
-                  </Step>
-                </Stepper>
-              </Grid>
-            </Grid>
+      <React.Fragment>
+        <Header withMenuButton>Выбор факультета</Header>
+        <Grid direction="row" className={styles.main} container>
+          {isFetching ? (
+            <span className={styles.loader}>
+              <CircularProgress />
+            </span>
+          ) : (
             <Grid
               className={styles.content}
               direction="column"
@@ -142,9 +111,9 @@ class Choice extends Component {
                 </Grid>
               </Paper>
             </Grid>
-          </React.Fragment>
-        )}
-      </Grid>
+          )}
+        </Grid>
+      </React.Fragment>
     );
   }
 }

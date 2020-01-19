@@ -9,6 +9,7 @@ import ScheduleRouter from "./schedule/ScheduleRouter";
 
 import NotFound from "screens/shared/screens/notFound/NotFound";
 import Choice from "./choice/Choice";
+import RequestError from "./shared/components/requestError/RequestError";
 
 class MainRouter extends Component {
   componentWillMount() {
@@ -19,6 +20,7 @@ class MainRouter extends Component {
   render() {
     return (
       <React.Fragment>
+        <RequestError />
         {!this.props.isFetching && (
           <Switch>
             <Route path="/" exact component={ScheduleRouter} />

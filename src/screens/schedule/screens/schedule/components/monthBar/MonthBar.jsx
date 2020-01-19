@@ -29,7 +29,7 @@ export default function MonthBar(props) {
             <div className={styles.dot} />
           </Grid>
           <Grid className={styles.monthTitle} item>
-            <div>{moment().format("MMMM")}</div>
+            {moment().format("MMMM")}
           </Grid>
         </Grid>
       </Grid>
